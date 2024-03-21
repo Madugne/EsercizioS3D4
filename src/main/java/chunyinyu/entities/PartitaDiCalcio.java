@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import java.util.Date;
 
 @Entity
+@Table(name = "partitaDiCalcio")
 public class PartitaDiCalcio extends Evento{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

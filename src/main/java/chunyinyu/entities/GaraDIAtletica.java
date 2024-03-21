@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
+@Table(name = "garaDiAtletica")
 public class GaraDIAtletica extends Evento{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

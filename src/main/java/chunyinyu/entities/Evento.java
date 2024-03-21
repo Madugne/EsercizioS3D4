@@ -6,6 +6,10 @@ import java.util.Date;
 
 @Entity
 @Table(name = "eventi")
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@DiscriminatorColumn(name = "partite_vinte")
+@NamedQuery(name = "getPartiteVinteInCasa",query = "SELECT p FROM PartitaDiCalcio p WHERE p.squadraDiCasa = :squadra AND p.nGolSquadraDiCasa > p.nGolSquadraOspite")
+@NamedQuery(name = "getPartiteVinteInTrasferta",query = "SELECT p FROM PartitaDiCalcio p WHERE p.squadraOspite = :squadra AND p.nGolSquadraOspite > p.nGolSquadraDiCasa")
 public class Evento {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

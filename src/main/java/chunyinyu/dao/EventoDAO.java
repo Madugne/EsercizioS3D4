@@ -3,6 +3,7 @@ package chunyinyu.dao;
 import chunyinyu.entities.Concerto;
 import chunyinyu.entities.Evento;
 import chunyinyu.entities.Genere;
+import chunyinyu.entities.PartitaDiCalcio;
 import chunyinyu.exceptions.NotFoundException;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
@@ -49,6 +50,18 @@ public class EventoDAO {
         TypedQuery<Concerto> query = entityManager.createQuery(
                 "SELECT c FROM Concerto c WHERE c.genere = :genere", Concerto.class);
         query.setParameter("genere", genere);
+        return query.getResultList();
+    }
+
+    public List<PartitaDiCalcio> getPartiteVinteInCasa(String squadra) {
+        TypedQuery<PartitaDiCalcio> query = entityManager.createNamedQuery("getPartiteVinteInCasa", PartitaDiCalcio.class);
+        query.setParameter("squadra", squadra);
+        return query.getResultList();
+    }
+
+    public List<PartitaDiCalcio> getPartiteVinteInTrasferta(String squadra) {
+        TypedQuery<PartitaDiCalcio> query = entityManager.createNamedQuery("getPartiteVinteInTrasferta", PartitaDiCalcio.class);
+        query.setParameter("squadra", squadra);
         return query.getResultList();
     }
 }
