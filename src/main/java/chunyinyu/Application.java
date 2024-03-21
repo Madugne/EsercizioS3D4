@@ -24,19 +24,24 @@ public class Application {
         LocationDAO locationDAO = new LocationDAO(entityManager);
 
         Location location1 = new Location("Location1", "Citta'1");
+
         Evento evento1 = new Evento("Evento1", new Date(),"Evento1 di prova" ,TipoEvento.PRIVATO, 50, location1);
+
+        Concerto concerto1 = new Concerto("Concerto1", new Date(), "Concerto di prova1", TipoEvento.PUBBLICO, 100, location1, Genere.CLASSICO, true);
+        Concerto concerto2 = new Concerto("Concerto2", new Date(), "Concerto di prova2", TipoEvento.PRIVATO, 50, location1, Genere.POP, false);
+
         Persona persona1 = new Persona("Mario", "Rossi", "mario@rossi.com",new Date() ,Sesso.M, null);
         Partecipazione partecipazione1 = new Partecipazione(persona1, evento1, Stato.CONFERMATA);
 
-        locationDAO.save(location1);
-        eventoDAO.save(evento1);
-        personaDAO.save(persona1);
-        partecipazioneDAO.save(partecipazione1);
-        List<Partecipazione> parteciazioni = new ArrayList<>();
-        parteciazioni.add(partecipazioneDAO.getById(1L));
-        Persona persona2 = personaDAO.getById(1L);
-        persona2.setPartecipazioni(parteciazioni);
-        personaDAO.save(persona2);
+//        locationDAO.save(location1);
+//        eventoDAO.save(evento1);
+//        personaDAO.save(persona1);
+//        partecipazioneDAO.save(partecipazione1);
+//        List<Partecipazione> parteciazioni = new ArrayList<>();
+//        parteciazioni.add(partecipazioneDAO.getById(1L));
+//        Persona persona2 = personaDAO.getById(1L);
+//        persona2.setPartecipazioni(parteciazioni);
+//        personaDAO.save(persona2);
 
 
     }
